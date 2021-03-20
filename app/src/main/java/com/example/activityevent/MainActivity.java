@@ -53,9 +53,7 @@ public class MainActivity extends AppCompatActivity {
                 //mengecek apakah edittext email dan password terdapat isi atau tidak
                 if (nama.isEmpty() || password.isEmpty()) {
                     //membuat variabel toast dan menampilkan pesan "edittext tidak boleh kosong
-                    Toast t = Toast.makeText(getApplicationContext(),
-                            "Email dan password wajib diisi!!!",
-                            Toast.LENGTH_LONG);
+                    Toast t = Toast.makeText(getApplicationContext(), "Email dan password wajib diisi!!!", Toast.LENGTH_LONG);
                     //menampilkan toast
                     t.show();
                 }else {
