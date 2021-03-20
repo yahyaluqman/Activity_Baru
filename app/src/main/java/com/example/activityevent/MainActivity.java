@@ -50,42 +50,52 @@ public class MainActivity extends AppCompatActivity {
                 //mengeset password yang benar
                 String pass = "123";
 
-                //membuat variabel toast dan membuat toast dengan menambahkan variabel nam dan password
-                //Tampilan jika email dan password benar
-                if (nama.equals("admin@mail.com")&&password.equals("123")){
-                    Toast.makeText(getApplicationContext(),"Login Sukses",Toast.LENGTH_SHORT).show();
+                //mengecek apakah edittext email dan password terdapat isi atau tidak
+                if (nama.isEmpty() || password.isEmpty()) {
+                    //membuat variabel toast dan menampilkan pesan "edittext tidak boleh kosong
+                    Toast t = Toast.makeText(getApplicationContext(),
+                            "Email dan password wajib diisi!!!",
+                            Toast.LENGTH_LONG);
+                    //menampilkan toast
+                    t.show();
+                }else {
+                    //membuat variabel toast dan membuat toast dengan menambahkan variabel nam dan password
+                    //Tampilan jika email dan password benar
+                    if (nama.equals("admin@mail.com")&&password.equals("123")){
+                        Toast.makeText(getApplicationContext(),"Login Sukses",Toast.LENGTH_SHORT).show();
 
-                    //Membuat objek bundle
-                    Bundle b = new Bundle();
+                        //Membuat objek bundle
+                        Bundle b = new Bundle();
 
-                    //memasukkan value dari variabel nama dengan kunci "a"
-                    // dan dimasukkan kedalam bundle
-                    b.putString("a", nama.trim());
+                        //memasukkan value dari variabel nama dengan kunci "a"
+                        // dan dimasukkan kedalam bundle
+                        b.putString("a", nama.trim());
 
-                    //memasukkan value dari variabel password dengan kunci "b"
-                    // dan dimasukkan kedalam bundle
-                    b.putString("b", password.trim());
+                        //memasukkan value dari variabel password dengan kunci "b"
+                        // dan dimasukkan kedalam bundle
+                        b.putString("b", password.trim());
 
-                    //membat objek intent berpindah activity dari mainactivity ke ActivityHasil
-                    Intent i = new Intent(getApplicationContext(), ActivityHasil.class);
+                        //membat objek intent berpindah activity dari mainactivity ke ActivityHasil
+                        Intent i = new Intent(getApplicationContext(), ActivityHasil.class);
 
-                    //memasukkan bundle kedalam intent untuk dikirimkan ke ActivityHasil
-                    i.putExtras(b);
+                        //memasukkan bundle kedalam intent untuk dikirimkan ke ActivityHasil
+                        i.putExtras(b);
 
-                    //berpindah ke ActivityHasil
-                    startActivity(i);
-                }
-                //Tampilan jika password salah
-                else if (nama.equals("admin@mail.com")){
-                    Toast.makeText(getApplicationContext(), "Password Salah", Toast.LENGTH_SHORT).show();
-                }
-                //Tampilan jika email salah
-                else if (password.equals("123")){
-                    Toast.makeText(getApplicationContext(), "Email Salah", Toast.LENGTH_SHORT).show();
-                }
-                //Tampilan jika email dan password salah
-                else {
-                    Toast.makeText(getApplicationContext(),"Email dan Password Salah",Toast.LENGTH_SHORT).show();
+                        //berpindah ke ActivityHasil
+                        startActivity(i);
+                    }
+                    //Tampilan jika password salah
+                    else if (nama.equals("admin@mail.com")){
+                        Toast.makeText(getApplicationContext(), "Password Salah", Toast.LENGTH_SHORT).show();
+                    }
+                    //Tampilan jika email salah
+                    else if (password.equals("123")){
+                        Toast.makeText(getApplicationContext(), "Email Salah", Toast.LENGTH_SHORT).show();
+                    }
+                    //Tampilan jika email dan password salah
+                    else {
+                        Toast.makeText(getApplicationContext(),"Email dan Password Salah",Toast.LENGTH_SHORT).show();
+                    }
                 }
             }
         });
